@@ -94,4 +94,7 @@ object Dependencies {
 
     const val lifeCycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${BuildDependenciesVersions.lifeCycleKtx}"
 
+    /* def lottie Android animation */
+    const val lottieAndroid = "com.airbnb.android:lottie:${BuildDependenciesVersions.lottieVersion}"
+
 }

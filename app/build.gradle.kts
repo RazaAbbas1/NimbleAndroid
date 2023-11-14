@@ -136,4 +136,7 @@ dependencies {
 
     // implement the network project
     implementation(project(mapOf("path" to ":network")))
+
+    /*Lottie Android animation*/
+    implementation(Dependencies.lottieAndroid)
 }
