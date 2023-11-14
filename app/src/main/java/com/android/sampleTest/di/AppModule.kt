@@ -2,8 +2,11 @@ package com.android.sampleTest.di
 
 import android.app.Application
 import android.content.Context
-import com.android.sampleTest.feature.repositories.LoginRepository
-import com.android.sampleTest.feature.repositories.MainRepository
+import com.android.sampleTest.repositories.LoginRepository
+import com.android.sampleTest.repositories.MainRepository
+import com.android.sampleTest.repositories.SurveyDataRepository
+import com.android.sampleTest.repositories.SurveyRepository
+import com.android.sampleTest.session.SessionManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,7 +31,18 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideSessionManager(mContext: Context): SessionManager {
+        return SessionManager(mContext)
+    }
+    @Provides
+    @Singleton
     fun provideLoginRepository(repo: LoginRepository): MainRepository {
+        return repo
+    }
+
+    @Provides
+    @Singleton
+    fun provideSurveyRepository(repo: SurveyRepository): SurveyDataRepository {
         return repo
     }
 }

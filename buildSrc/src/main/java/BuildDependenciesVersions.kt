@@ -37,4 +37,6 @@ object BuildDependenciesVersions {
     const val multiDex = "1.0.3"
     const val lifeCycleKtx = "2.6.2"
 
+    const val lottieVersion = "6.1.0"
+
 }
