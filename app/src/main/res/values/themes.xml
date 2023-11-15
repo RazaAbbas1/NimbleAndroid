@@ -6,4 +6,35 @@
     </style>
 
     <style name="Theme.SampleApp" parent="Base.Theme.SampleApp" />
+
+    <style name="Theme.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme_EditText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/shadow_edit_text</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="singleLine">true</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">15dp</item>
+    </style>
+
+    <style name="Theme_Button_Activated" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="background">@drawable/round_button</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
 </resources>

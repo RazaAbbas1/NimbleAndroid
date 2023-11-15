@@ -2,13 +2,8 @@ plugins {
     id(BuildPlugins.ANDROID_APPLICATION)
     id(BuildPlugins.KOTLIN_PARCELIZE)
     id(BuildPlugins.KOTLIN_PLUGIN)
-//    id(BuildPlugins.KOTLIN_KAPT)
     id(BuildPlugins.DAGGER_HILT)
-//    id(BuildPlugins.KOTLIN_ANDROID)
-
     kotlin("kapt")
-//    id("org.jetbrains.kotlin.android")
-//    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -88,55 +83,34 @@ dependencies {
     implementation(Dependencies.appCompatVersion)
     implementation(Dependencies.materialLibVersion)
     implementation(Dependencies.constraintLayoutVersion)
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.10.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-//    implementation(Dependencies.navFragmentExtVersion)
-//    implementation(Dependencies.navExtVersion)
-//    implementation(Dependencies.vectorVersion)
-//
     implementation(Dependencies.lifeCycleExtVersion)
     implementation(Dependencies.liveDataKtxVersion)
     implementation(Dependencies.viewModelKtxVersion)
-//
-//    implementation(Dependencies.glideVersion)
-//
-//    implementation(Dependencies.glideCompilerVersion)
-//
-//    implementation(Dependencies.coroutineCoreVersion)
-//    implementation(Dependencies.coroutinesVersion)
+
 
     implementation(Dependencies.hiltVersion)
     kapt(Dependencies.hiltKaptVersion)
-//    implementation(Dependencies.kaptHiltCompiler)
 
-
-//
     implementation(Dependencies.retrofitVersion)
     implementation(Dependencies.retrofitConverterVersion)
     implementation(Dependencies.retrofitCoroutinesVersion)
     implementation(Dependencies.okhttpVersion)
     implementation(Dependencies.okhttpInterceptorVersion)
-//
+
     implementation(Dependencies.gsonVersion)
 
-//
-//    implementation(Dependencies.multiDexVersion)
-//
-//
-//    implementation(Dependencies.lifeCycleRuntimeKtx)
-
-    /* WorkManager */
-//    implementation(Dependencies.workManagerVersion)
-//    implementation(Dependencies.hiltWorkVersion)
 
     // implement the network project
     implementation(project(mapOf("path" to ":network")))
 
     /*Lottie Android animation*/
     implementation(Dependencies.lottieAndroid)
+
+    implementation("com.tbuonomo:dotsindicator:5.0")
+    implementation("com.squareup.picasso:picasso:2.8")
+    implementation("com.facebook.shimmer:shimmer:0.1.0@aar")
 }

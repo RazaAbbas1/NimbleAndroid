@@ -1,10 +1,12 @@
 package com.android.sampleTest.feature.login
 
+import androidx.databinding.ObservableField
 import androidx.lifecycle.viewModelScope
 import com.android.sampleTest.base.BaseViewModel
 import com.android.sampleTest.repositories.MainRepository
 import com.android.network.models.LoginPostModel
 import com.android.network.models.RefreshTokenPostModel
+import com.android.network.models.SurveysResponseModel
 import com.android.network.services.ApiResult
 import com.android.sampleTest.feature.survey.SurveyEvent
 import com.android.sampleTest.repositories.SurveyDataRepository
@@ -20,20 +22,23 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(private val repository: MainRepository,
                                         private val surveyDataRepository: SurveyDataRepository) : BaseViewModel() {
 
-    private val _conversion = MutableStateFlow<LoginEvent>(LoginEvent.Empty)
-    val conversion: StateFlow<LoginEvent> = _conversion
+    val userEmail: ObservableField<String> = ObservableField("")
+    val password: ObservableField<String> = ObservableField("")
+
+    private val _mLoginFlow = MutableStateFlow<LoginEvent>(LoginEvent.Empty)
+    val loginFLow: StateFlow<LoginEvent> = _mLoginFlow
 
     fun loginApiCall(){
         viewModelScope.launch(Dispatchers.IO) {
-            _conversion.value = LoginEvent.Loading
-            when(val loginResponse = repository.login(LoginPostModel())) {
-                is ApiResult.Error -> _conversion.value = LoginEvent.Failure(loginResponse.message!!)
+            _mLoginFlow.value = LoginEvent.Loading
+            when(val loginResponse = repository.login(LoginPostModel(email =  userEmail.get().toString(), password = password.get().toString()))) {
+                is ApiResult.Error -> _mLoginFlow.value = LoginEvent.Failure(loginResponse.message!!)
                 is ApiResult.Success -> {
                     val response = loginResponse.data!!.data?.attributes
                     if(response == null) {
-                        _conversion.value = LoginEvent.Failure("Unexpected error")
+                        _mLoginFlow.value = LoginEvent.Failure("Unexpected error")
                     } else {
-                        _conversion.value = LoginEvent.Success(
+                        _mLoginFlow.value = LoginEvent.Success(
                             response
                         )
                     }
@@ -46,39 +51,16 @@ class LoginViewModel @Inject constructor(private val repository: MainRepository,
 
     fun refreshTokenApiCall(token: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _conversion.value = LoginEvent.Loading
+            _mLoginFlow.value = LoginEvent.Loading
             when(val loginResponse = repository.refreshToken(RefreshTokenPostModel(refreshToken = token))) {
-                is ApiResult.Error -> _conversion.value = LoginEvent.Failure(loginResponse.message!!)
+                is ApiResult.Error -> _mLoginFlow.value = LoginEvent.Failure(loginResponse.message!!)
                 is ApiResult.Success -> {
                     val response = loginResponse.data!!.data?.attributes
                     if(response == null) {
-                        _conversion.value = LoginEvent.Failure("Unexpected error")
+                        _mLoginFlow.value = LoginEvent.Failure("Unexpected error")
                     } else {
-                        _conversion.value = LoginEvent.Success(
+                        _mLoginFlow.value = LoginEvent.Success(
                             response
-                        )
-                    }
-                }
-            }
-        }
-    }
-
-
-    private val _mSurveysFlow = MutableStateFlow<SurveyEvent>(SurveyEvent.Empty)
-    val surveyDataFlow: StateFlow<SurveyEvent> = _mSurveysFlow
-
-    fun fetchSurveys(){
-        viewModelScope.launch(Dispatchers.IO) {
-            _mSurveysFlow.value = SurveyEvent.Loading
-            when(val response = surveyDataRepository.getSurveysList("")) {
-                is ApiResult.Error -> _mSurveysFlow.value = SurveyEvent.Failure(response.message!!)
-                is ApiResult.Success -> {
-                    val responseData = response.data!!.data
-                    if(responseData == null) {
-                        _mSurveysFlow.value = SurveyEvent.Failure("Unexpected error")
-                    } else {
-                        _mSurveysFlow.value = SurveyEvent.Success(
-                            responseData
                         )
                     }
                 }

@@ -4,13 +4,17 @@ import com.google.gson.annotations.SerializedName
 
 data class SurveysResponseModel(
     val data: List<SurveyData>?,
-    val meta: Meta,
-)
+    val meta: Meta
+){
+    companion object{
+        const val TAG = "surveys_response_model"
+    }
+}
 
 data class SurveyData(
     val id: String,
     val type: String,
-    val attributes: SurveyDataAttributes,
+    val attributes: SurveyDataAttributes
 )
 
 data class SurveyDataAttributes(
@@ -29,9 +33,9 @@ data class SurveyDataAttributes(
     @SerializedName("active_at")
     val activeAt: String,
     @SerializedName("inactive_at")
-    val inactiveAt: Any?,
+    val inactiveAt: String?,
     @SerializedName("survey_type")
-    val surveyType: String,
+    val surveyType: String
 )
 
 data class Meta(
@@ -39,5 +43,5 @@ data class Meta(
     val pages: Long,
     @SerializedName("page_size")
     val pageSize: Long,
-    val records: Long,
+    val records: Long
 )
