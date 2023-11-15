@@ -4,13 +4,13 @@ import com.google.gson.annotations.SerializedName
 
 
 data class LoginResponseModel(
-    val data: Data?,
+    val data: Data?
 )
 
 data class Data(
     val id: String,
     val type: String,
-    val attributes: Attributes,
+    val attributes: Attributes
 )
 
 data class Attributes(
@@ -23,5 +23,5 @@ data class Attributes(
     @SerializedName("refresh_token")
     val refreshToken: String,
     @SerializedName("created_at")
-    val createdAt: Long,
+    val createdAt: Long
 )

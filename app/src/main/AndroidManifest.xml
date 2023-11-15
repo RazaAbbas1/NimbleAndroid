@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="com.android.sampleTest.MyApp"
+        android:name=".MyApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -18,19 +18,33 @@
         android:theme="@style/Theme.SampleApp"
         tools:replace="android:name"
         tools:targetApi="31">
+
         <activity
-            android:name="com.android.sampleTest.feature.login.LoginActivity"
-            android:exported="true">
+            android:name=".feature.splash.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name="com.android.sampleTest.MainActivity"
-            android:exported="true">
+            android:name=".feature.login.LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:exported="false">
         </activity>
+
+        <activity
+            android:name=".feature.survey.SurveysActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:exported="false" />
+
+        <activity
+            android:name=".feature.survey.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -2,7 +2,6 @@ package com.android.network.services
 
 import com.android.network.Constants.GET_SURVEYS_URL
 import com.android.network.Constants.LOGIN_URL
-import com.android.network.Constants.REFRESH_TOKEN_URL
 import com.android.network.models.LoginPostModel
 import com.android.network.models.LoginResponseModel
 import com.android.network.models.RefreshTokenPostModel
@@ -25,7 +24,7 @@ interface ApiService {
     @POST(LOGIN_URL)
     fun login(@Body loginPostData: LoginPostModel): LoginResponseModel
 
-    @POST(REFRESH_TOKEN_URL)
+    @POST(LOGIN_URL)
     fun refreshToken(@Body postData: RefreshTokenPostModel): LoginResponseModel
 
     @GET(GET_SURVEYS_URL)

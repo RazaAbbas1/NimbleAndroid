@@ -7,11 +7,6 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.ProcessLifecycleOwner
 import dagger.hilt.android.HiltAndroidApp
 
-/**
- * Created By Khizzar
- * Created On 11/10/2023
- **/
-
 @HiltAndroidApp
 class MyApp: Application() {
 

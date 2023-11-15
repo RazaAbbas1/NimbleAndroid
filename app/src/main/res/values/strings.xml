@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SampleApp</string>
+    <string name="userNameEmailHint">Username / Email</string>
+    <string name="passwordHint">Password</string>
+    <string name="logIn">Log In</string>
+    <string name="survey_details">Survey Details</string>
 </resources>
