@@ -4,12 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="userEmail"
+            name="email"
             type="androidx.databinding.ObservableField&lt;String&gt;" />
 
-        <variable
-            name="password"
-            type="androidx.databinding.ObservableField&lt;String&gt;" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,16 +14,47 @@
         android:layout_height="match_parent"
         android:background="@drawable/login_background">
 
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/next"
+            android:rotation="180"
+            android:padding="24dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@color/white" />
+
+
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/logoView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/splash_logo"
-            app:layout_constraintBottom_toTopOf="@id/container"
+            app:layout_constraintBottom_toTopOf="@id/tv_forgot"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="24dp"
             />
+
+
+
+        <TextView
+            android:id="@+id/tv_forgot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/container"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:textColor="@color/white"
+            android:text="@string/forgot_text"/>
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
@@ -36,14 +64,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
+
+
             <EditText
                 android:id="@+id/edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 style="@style/Theme_EditText"
-                android:hint="@string/userNameEmailHint"
+                android:hint="@string/email"
                 android:layout_marginTop="34dp"
-                android:text="@={userEmail}"
+                android:text="@={email}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -51,43 +81,14 @@
                 android:inputType="textEmailAddress"
                 tools:text="mkm@gmail.com" />
 
-
-            <EditText
-                android:id="@+id/edt_password"
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                style="@style/Theme_EditText"
-                android:hint="@string/passwordHint"
-                android:text="@={password}"
-                android:layout_marginTop="16dp"
-                android:maxLength="14"
-                android:paddingEnd="50dp"
-                app:layout_constraintTop_toBottomOf="@id/edt_email"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:importantForAutofill="no"
-                android:inputType="textPassword"/>
-
-
-            <TextView
-                android:id="@+id/tv_forgot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="@+id/edt_password"
-                app:layout_constraintBottom_toBottomOf="@+id/edt_password"
-                app:layout_constraintEnd_toEndOf="@+id/edt_password"
-                android:padding="10dp"
-                android:textColor="@color/white"
-                android:text="@string/forgot"/>
-
             <Button
-                android:id="@+id/sign_in_btn"
+                android:id="@+id/reset_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/round_button"
-                android:text="@string/logIn"
-                app:layout_constraintTop_toBottomOf="@id/edt_password"
+                android:text="@string/reset"
+                app:layout_constraintTop_toBottomOf="@id/edt_email"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 />
@@ -109,7 +110,8 @@
             app:lottie_rawRes="@raw/animation"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_speed="1.75"/>
+            app:lottie_speed="1.75"
+            android:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

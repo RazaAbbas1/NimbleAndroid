@@ -84,16 +84,16 @@ abstract class BaseActivity<T : BaseViewModel, DB: ViewDataBinding>(private val 
         }
     }
 
-    fun showAlert( message : String,button_title : String = "Okay", isCancellable : Boolean = true,
-                   showCancel : Boolean = true, sucessBlock : () -> Unit) {
+    fun showAlert(message : String, buttonTitle : String = "Okay", isCancellable : Boolean = true,
+                   showCancel : Boolean = true, successBlock : () -> Unit) {
 
         try {
             val builder1 = AlertDialog.Builder(this)
             builder1.setMessage(message)
             builder1.setTitle(getString(R.string.app_name))
             builder1.setCancelable(isCancellable)
-            builder1.setPositiveButton(button_title) { dialog, id ->
-                sucessBlock()
+            builder1.setPositiveButton(buttonTitle) { dialog, id ->
+                successBlock()
             }
             if (showCancel) {
                 builder1.setNegativeButton(

@@ -4,8 +4,8 @@ package com.android.network
 object Constants {
 
     // Endpoints
-//    const val BASE_URL = "https://survey-api.nimblehq.co"
     const val LOGIN_URL = "/api/v1/oauth/token"
+    const val FORGOT_URL = "/api/v1/passwords"
     const val GET_SURVEYS_URL = "/api/v1/surveys"
 
     const val GRANT_TYPE_PASSWORD = "password"

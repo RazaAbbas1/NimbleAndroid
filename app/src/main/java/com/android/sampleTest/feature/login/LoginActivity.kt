@@ -2,6 +2,8 @@ package com.android.sampleTest.feature.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
@@ -9,9 +11,13 @@ import com.android.network.models.Attributes
 import com.android.sampleTest.R
 import com.android.sampleTest.base.BaseActivity
 import com.android.sampleTest.databinding.ActivityLoginBinding
+import com.android.sampleTest.feature.forgot.ForgotActivity
 import com.android.sampleTest.feature.survey.SurveysActivity
 import com.android.sampleTest.session.SessionManager
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 
@@ -41,6 +47,7 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>(LoginVi
         checkTokenAndDoAutoLogin()
 
         binding.signInBtn.setOnClickListener { doLogin() }
+        binding.tvForgot.setOnClickListener { startActivity(Intent(this, ForgotActivity::class.java)) }
     }
 
     private fun checkTokenAndDoAutoLogin() {
@@ -69,6 +76,23 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>(LoginVi
     }
 
     private fun doLogin() {
+
+        CoroutineScope(Dispatchers.Main).launch {
+            Handler(Looper.getMainLooper()).post {
+                Toast.makeText(this@LoginActivity, "YAAAAAAy", Toast.LENGTH_SHORT).show()
+            }
+
+//            Toast.makeText(this@LoginActivity, "YAAAAAAy", Toast.LENGTH_SHORT).show()
+        }
+
+//        GlobalScope.launch {  }
+        lifecycleScope.launch{
+//            runOnUiThread {
+            Handler(Looper.getMainLooper()).post {
+                Toast.makeText(this@LoginActivity, "YAAAAAAy", Toast.LENGTH_SHORT).show()
+            }
+//            }
+        }
 
         viewModel.loginApiCall()
 
