@@ -6,9 +6,7 @@ import com.android.sampleTest.base.BaseViewModel
 import com.android.sampleTest.repositories.MainRepository
 import com.android.network.models.LoginPostModel
 import com.android.network.models.RefreshTokenPostModel
-import com.android.network.models.SurveysResponseModel
 import com.android.network.services.ApiResult
-import com.android.sampleTest.feature.survey.SurveyEvent
 import com.android.sampleTest.repositories.SurveyDataRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -19,8 +17,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val repository: MainRepository,
-                                        private val surveyDataRepository: SurveyDataRepository) : BaseViewModel() {
+class LoginViewModel @Inject constructor(private val repository: MainRepository) : BaseViewModel() {
 
     val userEmail: ObservableField<String> = ObservableField("")
     val password: ObservableField<String> = ObservableField("")

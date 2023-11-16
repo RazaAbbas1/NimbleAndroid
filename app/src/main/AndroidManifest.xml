@@ -37,6 +37,12 @@
         </activity>
 
         <activity
+            android:name=".feature.forgot.ForgotActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:exported="false">
+        </activity>
+
+        <activity
             android:name=".feature.survey.SurveysActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
             android:exported="false" />

@@ -4,4 +4,8 @@
     <string name="passwordHint">Password</string>
     <string name="logIn">Log In</string>
     <string name="survey_details">Survey Details</string>
+    <string name="forgot">Forgot?</string>
+    <string name="reset">Reset</string>
+    <string name="forgot_text">Enter your email to receive instructions for\n resetting your password.</string>
+    <string name="email">Email</string>
 </resources>

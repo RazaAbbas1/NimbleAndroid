@@ -10,6 +10,7 @@ import com.android.network.models.SurveysResponseModel
 import com.android.sampleTest.R
 import com.android.sampleTest.base.BaseActivity
 import com.android.sampleTest.databinding.ActivitySurveysBinding
+import com.android.sampleTest.feature.login.LoginActivity
 import com.android.sampleTest.session.SessionManager
 import com.android.sampleTest.utils.TimeUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -81,11 +82,20 @@ class SurveysActivity : BaseActivity<SurveyViewModel, ActivitySurveysBinding>(Su
         sessionManager = SessionManager(this)
 
         binding.btnDetails.setOnClickListener { moveToNextActivity() }
+        binding.cardView.setOnClickListener { openDialogForLogout() }
 
         binding.shimmerViewContainer.stopShimmerAnimation()
         binding.shimmerViewContainer.visibility = View.GONE
         binding.cardView.visibility = View.VISIBLE
 
+    }
+
+    private fun openDialogForLogout() {
+        showAlert("Logout ?", "Yes") {
+            sessionManager.clear()
+            startActivity(Intent(this, LoginActivity::class.java))
+            this.finish()
+        }
     }
 
     private fun moveToNextActivity() {
